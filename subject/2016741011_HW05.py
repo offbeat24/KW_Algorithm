@@ -8,13 +8,13 @@ class Node(object) :
         self.right = None
         self.parent = parent
         
-def insert(node, key) :
+def insert(node, key, parent) :
     if node is None:
-        node = Node(key)
+        node = Node(key, parent)
     elif key < node.key:
-        node.left = insert(node.left, key)
+        node.left = insert(node.left, key, node)
     else :
-        node.right = insert(node.right, key)
+        node.right = insert(node.right, key, node)
     return node
 
 def search(node, key) :
@@ -56,7 +56,7 @@ value = x[800]
 
 root = None 
 for i in x :
-    root = insert(root, i)
+    root = insert(root, i, None)
 
 start = timer()
 found = search(root, value)
