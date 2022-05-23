@@ -1,6 +1,5 @@
 import heapq
 import queue
-import re
 
 class Queue(object) :
     def __init__(self) :
@@ -42,7 +41,7 @@ def heuristic(goal, next) :
     (x2, y2) = next
     dx = x1 - x2
     dy = y1 - y2
-    return dx*dx + dy*dy
+    return ((dx*dx) + (dy*dy))**(1/2)
 
 while queue.length() > 0 :
     current = queue.pop()
@@ -68,3 +67,6 @@ while current is not start :
     current = came_from[current]
 path.reverse()
 print(path)
+
+# 유클리디언
+# [(2, 5), (2, 4), (2, 3), (3, 3), (4, 3), (4, 4), (4, 5), (5, 5), (6, 5), (6, 4), (7, 4), (8, 4), (8, 3), (8, 2), (8, 1)]
